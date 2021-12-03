@@ -357,7 +357,7 @@ export function Button({
 Button.propTypes = {
   isLoading: PropTypes.bool,
   /**
-   When a button is in the loading state you can supply custom text lorem
+   When a button is in the loading state you can supply custom text
   */
   loadingText: PropTypes.node,
   /**
