@@ -1,17 +1,45 @@
-import React from "react";
+import React from 'react';
 
-import { Avatar } from "./Avatar";
+import { Avatar } from './Avatar';
 
 export default {
-  title: "Design System/Avatar",
+  title: 'Design System/Avatar',
   component: Avatar,
+
+  /*
+   * More on Storybook argTypes at:
+   * https://storybook.js.org/docs/react/api/argtypes
+   */
+  argTypes: {
+    size: {
+      control: {
+        type: 'select',
+      },
+      options: ['tiny', 'small', 'medium', 'large'],
+    },
+    loading: {
+      control: {
+        type: 'boolean',
+      },
+    },
+    username: {
+      control: {
+        type: 'text',
+      },
+    },
+    src: {
+      control: {
+        type: 'text',
+      },
+    },
+  },
 };
 
 export const Standard = (args) => <Avatar {...args} />;
 Standard.args = {
-  size: "large",
-  username: "Tom Coleman",
-  src: "https://avatars2.githubusercontent.com/u/132554",
+  size: 'large',
+  username: 'Tom Coleman',
+  src: 'https://avatars2.githubusercontent.com/u/132554',
 };
 
 export const Sizes = (args) => (
@@ -23,8 +51,8 @@ export const Sizes = (args) => (
   </div>
 );
 Sizes.args = {
-  username: "Tom Coleman",
-  src: "https://avatars2.githubusercontent.com/u/132554",
+  username: 'Tom Coleman',
+  src: 'https://avatars2.githubusercontent.com/u/132554',
 };
 
 export const Initials = (args) => (
@@ -37,16 +65,16 @@ export const Initials = (args) => (
 );
 
 export const Loading = (args) => (
-    <div>
-      <Avatar {...args} size="large" />
-      <Avatar {...args} size="medium" />
-      <Avatar {...args} size="small" />
-      <Avatar {...args} size="tiny" />
-    </div>
-  );
-  Loading.args = {
-    loading: true,
-  };
+  <div>
+    <Avatar {...args} size="large" />
+    <Avatar {...args} size="medium" />
+    <Avatar {...args} size="small" />
+    <Avatar {...args} size="tiny" />
+  </div>
+);
+Loading.args = {
+  loading: true,
+};
 
 export const Large = (args) => (
   <div>
@@ -59,3 +87,21 @@ export const Large = (args) => (
     />
   </div>
 );
+
+/*
+ * New story using Controls
+ * Read more about Storybook templates at:
+ * https://storybook.js.org/docs/react/writing-stories/introduction#using-args
+ */
+const Template = (args) => <Avatar {...args} />;
+export const Controls = Template.bind();
+/*
+ * More on args at:
+ * https://storybook.js.org/docs/react/writing-stories/args
+ */
+Controls.arg = {
+  loading: false,
+  size: 'tiny',
+  username: 'Dominic Nguyen',
+  src: 'https://avatars2.githubusercontent.com/u/263385',
+};
